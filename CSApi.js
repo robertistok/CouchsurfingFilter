@@ -99,13 +99,17 @@ class CouchsurfingAPI {
 
     return this.apiRequest(path);
   }
+
+  getReferences(userID = this.userID, type = 'other_and_friend') {
+    const path = `/api/v3/users/${userID}/references?perPage=999999&relationshipType=${type}&includeReferenceMeta=true`;
+
+    return this.apiRequest(path);
+  }
 }
 
 async function test() {
   const API = new CouchsurfingAPI('nzoakhvi@sharklasers.com', 'qwerty');
   await API._login();
-
-  const data = await API.getSelfProfile();
-
-  console.log('test', data);
 }
+
+module.exports = CouchsurfingAPI;
