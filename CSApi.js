@@ -30,6 +30,7 @@ class CouchsurfingAPI {
   }
 
   async _login() {
+    console.log('here');
     if (this.loggedIn !== true) {
       const loginPayload = {
         actionType: 'manual_login',
@@ -111,5 +112,8 @@ async function test() {
   const API = new CouchsurfingAPI('nzoakhvi@sharklasers.com', 'qwerty');
   await API._login();
 }
+
+const API = new CouchsurfingAPI('nzoakhvi@sharklasers.com', 'qwerty');
+API._login().then(() => console.log(API));
 
 module.exports = CouchsurfingAPI;
